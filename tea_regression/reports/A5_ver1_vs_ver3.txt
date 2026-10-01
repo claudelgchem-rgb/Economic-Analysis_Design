@@ -1,0 +1,16 @@
+# semantic diff  BASE=economics_ver1.py  OTHER=economics_ver3.py
+# normalized non-UI statements: BASE=348  OTHER=348
+
+# TOTAL NON-UI HUNKS: 0
+
+# st.write calls (reported separately; treated as UI/debug output)
+  - BASE L126 | st.write(st.session_state.chemicals('KH2PO4'))
+  - BASE L186 | st.write('Utilities')
+  - BASE L224 | st.write(i)
+  - BASE L262 | st.write(st.session_state.selected_id_old)
+  - BASE L412 | st.write('batch_time', batch_time)
+  - BASE L454 | st.write('Out', j, j.F_vol * st.session_state.operating_hours, 'kg/year')
+  + OTHER L832 | st.write('Out:', j, f'{j.F_vol * st.session_state.operating_hours:,.2f} kg/year')
+  = BASE L455 / OTHER L833 | st.write(i.results())
+
+RESULT: PASS (non-UI sequence identical)

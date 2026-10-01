@@ -1,0 +1,24 @@
+# A6 design preservation  ver2=economics_ver2.py  ver3=economics_ver3.py
+
+[PASS] css: ver2 items=38  ver3 items=38  missing=0  extra=0
+    (의도된 변경) selector '*' -> 'html, body, [class*="css"]', declarations identical
+
+[PASS] html: ver2 items=23  ver3 items=23  missing=0  extra=0
+
+[PASS] page: ver2 items=4  ver3 items=4  missing=0  extra=0
+
+[PASS] widgets: ver2 items=28  ver3 items=28  missing=0  extra=0
+
+[PASS] colcfg: ver2 items=4  ver3 items=4  missing=0  extra=0
+
+[PASS] columns: ver2 items=7  ver3 items=7  missing=0  extra=0
+
+[PASS] container_border: ver2 items=8  ver3 items=8  missing=0  extra=0
+
+[PASS] expander: ver2 items=3  ver3 items=3  missing=0  extra=0
+
+[PASS] visual section order
+    ver2: ['📂 프로젝트 데이터 관리 (Save & Load)', '① 화학물질 DB 및 업로드', '② 기본 생산 조건 및 유틸리티 설정', '③ 용액 관리 및 조성 설정 (Solution Preparation)', '④ 공정 흐름도 모델링 (Process Flow Diagram - BFD)', '⑤ 경제성 분석 및 시뮬레이션 결과 (Techno-Economic Results)']
+    ver3: ['📂 프로젝트 데이터 관리 (Save & Load)', '① 화학물질 DB 및 업로드', '② 기본 생산 조건 및 유틸리티 설정', '③ 용액 관리 및 조성 설정 (Solution Preparation)', '④ 공정 흐름도 모델링 (Process Flow Diagram - BFD)', '⑤ 경제성 분석 및 시뮬레이션 결과 (Techno-Economic Results)']
+
+RESULT: PASS

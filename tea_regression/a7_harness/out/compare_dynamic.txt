@@ -1,0 +1,65 @@
+helper-call log entries: v1=120 v3=120 identical=True
+call names seq: 
+[initial] exc v1=[] v3=[] | ss keys only-in-one=[] | ss value diffs=[] | #df 1/1 same=True | graphviz same=True
+[after_next] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 2/2 same=True | graphviz same=True
+[num_sol] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 2/2 same=True | graphviz same=True
+[submitted_A] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 2/2 same=True | graphviz same=True
+[calc_A] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[submitted_B] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[calc_B] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[detail_감가비] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[detail_발효원재료] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[gmp_off] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=True | graphviz same=True
+[after_load] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 2/2 same=True | graphviz same=True
+[calc_after_load] exc v1=[] v3=[] | ss keys only-in-one=['FormSubmitter:용액 조성-용액 저장', 'FormSubmitter:용액 조성-💾 용액 저장 및 반영'] | ss value diffs=[] | #df 12/12 same=False | graphviz same=True
+   df 9 differs
+ ,
+Capex,2753886205.811488
+Capacity [MT],100.0
+Glucose 단가 [/MT],750000.0
+제조 원가 [/MT],24535707.41238079
+ 
+---
+ ,
+Capex,2753886205.8114886
+Capacity [MT],100.0
+Glucose 단가 [/MT],750000.0
+제조 원가 [/MT],24535707.412380792
+
+   df 10 differs
+ ,,원단위[kg/kg],제조원가[₩],비중
+총 투자비,, ,,"₩24,535,707.41"
+capa,,,/톤,
+변동비,발효 원재료,2.5,1875000.0,0.07641923538156759
+변동비,발효 부재료,47.5,4569750.0,0.18624896047195652
+변동비,유틸리티,0.2345308814865285,55827.620709623996,0.002275362180160871
+고정비,감가비,1.5054577925102803,2258186.6887654206,0.0920367467222866
+고정비,인건비,9.6,14 
+---
+ ,,원단위[kg/kg],제조원가[₩],비중
+총 투자비,, ,,"₩24,535,707.41"
+capa,,,/톤,
+변동비,발효 원재료,2.5,1875000.0,0.07641923538156759
+변동비,발효 부재료,47.5,4569750.0,0.18624896047195652
+변동비,유틸리티,0.2345308814865285,55827.620709623996,0.002275362180160871
+고정비,감가비,1.5054577925102806,2258186.688765421,0.09203674672228662
+고정비,인건비,9.6,14
+calc_A: v1 sum_price 제조원가/MT=39,076,226.5791  v3 sum_price=39,076,226.5791  v3 KPI '단위당 제조원가' text='₩ 39,076,227' -> 39,076,227  match(round)=True
+   KPI cards: [('총 설비 투자비 (CAPEX)', '₩ 13,769,431,029'), ('연간 생산 용량 (Capacity)', '100.0 MT/yr'), ('단위당 제조원가 (/MT)', '₩ 39,076,227'), ('Glucose 원료 단가', '₩ 750,000 /MT')]
+   v1 sum_price:
+                     Unnamed: 1
+Capex             1.376943e+10
+Capacity [MT]     1.000000e+02
+Glucose 단가 [/MT]  7.500000e+05
+제조 원가 [/MT]       3.907623e+07
+calc_B: v1 sum_price 제조원가/MT=42,716,710.6046  v3 sum_price=42,716,710.6046  v3 KPI '단위당 제조원가' text='₩ 42,716,711' -> 42,716,711  match(round)=True
+   KPI cards: [('총 설비 투자비 (CAPEX)', '₩ 13,694,080,069'), ('연간 생산 용량 (Capacity)', '100.0 MT/yr'), ('단위당 제조원가 (/MT)', '₩ 42,716,711'), ('Glucose 원료 단가', '₩ 750,000 /MT')]
+   v1 sum_price:
+                     Unnamed: 1
+Capex             1.369408e+10
+Capacity [MT]     1.000000e+02
+Glucose 단가 [/MT]  7.500000e+05
+제조 원가 [/MT]       4.271671e+07
+scenario sensitivity (v1): A cost/MT 39076226.57906545  B cost/MT 42716710.60463331
+labels mapping: {'next_label': ('다음', '다음 단계로 이동 (용액 등록) ➔'), 'submit_label': ('용액 저장', '💾 용액 저장 및 반영'), 'calc_label': ('Calculate', '🚀 경제성 평가 및 시뮬레이션 계산 실행 (Run BioSTEAM)')}
+graphviz edges (v3, calc_A): []

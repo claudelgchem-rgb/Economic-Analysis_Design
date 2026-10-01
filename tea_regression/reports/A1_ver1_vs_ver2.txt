@@ -1,0 +1,134 @@
+# semantic diff  BASE=economics_ver1.py  OTHER=economics_ver2.py
+# normalized non-UI statements: BASE=348  OTHER=362
+
+## HUNK 1: insert  BASE[6:6]  OTHER[6:11]
++ L   9 | try:
++ L  10 |     from mock_biosteam import setup_biosteam_fallback
++ L  11 |     setup_biosteam_fallback()
++ L  12 | except Exception:
++ L  13 |     pass
+
+## HUNK 2: replace  BASE[9:13]  OTHER[14:24]
+- L  13 | from pages.flow_tabs.Biosteam_custom_unit import *
+- L  14 | from pages.flow_tabs.aux_chemical import *
+- L  15 | from pages.flow_tabs.util_bfd_Copy3 import *
+- L  16 | from pages.flow_tabs.util_biosteam_Copy1 import *
++ L  19 | try:
++ L  20 |     from pages.flow_tabs.Biosteam_custom_unit import *
++ L  21 |     from pages.flow_tabs.aux_chemical import *
++ L  22 |     from pages.flow_tabs.util_bfd_Copy3 import *
++ L  23 |     from pages.flow_tabs.util_biosteam_Copy1 import *
++ L  24 | except ModuleNotFoundError:
++ L  25 |     from flow_tabs.Biosteam_custom_unit import *
++ L  26 |     from flow_tabs.aux_chemical import *
++ L  27 |     from flow_tabs.util_bfd_Copy3 import *
++ L  28 |     from flow_tabs.util_biosteam_Copy1 import *
+
+## HUNK 3: insert  BASE[20:20]  OTHER[31:37]
++ L 347 | if not os.path.exists(base_dir):
++ L 348 |     _local_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
++ L 349 |     if os.path.exists(_local_data_dir):
++ L 350 |         base_dir = _local_data_dir + os.sep
++ L 352 |     else:
++ L 352 |         base_dir = os.path.join(os.getcwd(), 'data') + os.sep
+
+## HUNK 4: delete  BASE[81:82]  OTHER[98:98]
+- L 122 | upload_chemical()
+
+## HUNK 5: replace  BASE[111:114]  OTHER[127:129]
+- L 171 | if 'chemical_list' not in st.session_state:
+- L   0 |     pass
+- L 176 | else:
++ L 493 | upload_chemical()
++ L 498 | if 'chemical_list' in st.session_state:
+
+## HUNK 6: replace  BASE[138:148]  OTHER[153:174]
+- L 207 |     if st.session_state.proceed:
+- L 209 |         if 'Water' in st.session_state.solutions:
+- L 210 |             num_sol = len(st.session_state.solutions) - 1
+- L 212 |         else:
+- L 212 |             num_sol = len(st.session_state.solutions)
+- L 214 |         num_sol = st.number_input('<LABEL>', min_value=0, step=1, key='num_sol', value=max(num_sol, 1))
+- L 215 |         sol_list = [f'용액 {i + 1}' for i in range(num_sol)]
+- L 218 |         with st.form('용액 조성'):
+- L 219 |             sol_ui = {str(nn): st.columns(4) for nn in range(num_sol // 4 + 1)}
+- L 220 |             sol_tmp = {}
++ L 557 | if st.session_state.proceed:
++ L 567 |     if 'Water' in st.session_state.solutions:
++ L 568 |         num_sol = len(st.session_state.solutions) - 1
++ L 570 |     else:
++ L 570 |         num_sol = len(st.session_state.solutions)
++ L 572 |     num_sol = st.number_input('<LABEL>', min_value=0, step=1, key='num_sol', value=max(num_sol, 1))
++ L 573 |     sol_list = [f'용액 {i + 1}' for i in range(num_sol)]
++ L 576 |     with st.form('용액 조성'):
++ L 577 |         sol_ui = {str(nn): st.columns(4) for nn in range(num_sol // 4 + 1)}
++ L 578 |         sol_tmp = {}
++ L 579 |         for (idx, i) in enumerate(sol_list):
++ L 586 |             if i not in st.session_state.solutions:
++ L 587 |                 sol_tmp[i] = pd.DataFrame({'Name': [''], 'Concentration [g/L]': [0.0]})
++ L 589 |             else:
++ L 589 |                 sol_tmp[i] = pd.DataFrame.from_dict(st.session_state.solutions[i], orient='index').reset_index()
++ L 590 |                 sol_tmp[i].columns = ['Name', 'Concentration [g/L]']
++ L 592 |             sol_tmp[i] = st.data_editor(sol_tmp[i], num_rows='dynamic', key=f'{i}_solution', hide_index=True, column_config={'Name': st.column_config.SelectboxColumn(options=st.session_state.chemical_list, required=True), 'Concentration [g/L]': st.column_config.NumberColumn(required=True)})
++ L 603 |             st.session_state.autoclave[i] = st.checkbox('<LABEL>', value=True, key=f'{i}_autoclave')
++ L 605 |         sol_calc = st.form_submit_button('<LABEL>')
++ L 606 |         if sol_calc:
++ L 607 |             st.session_state.solutions = {}
+
+## HUNK 7: replace  BASE[149:170]  OTHER[175:185]
+- L 225 |                 if i not in st.session_state.solutions:
+- L 226 |                     sol_tmp[i] = pd.DataFrame({'Name': [''], 'Concentration [g/L]': [0.0]})
+- L 228 |                 else:
+- L 228 |                     sol_tmp[i] = pd.DataFrame.from_dict(st.session_state.solutions[i], orient='index').reset_index()
+- L 229 |                     sol_tmp[i].columns = ['Name', 'Concentration [g/L]']
+- L 231 |                 sol_tmp[i] = st.data_editor(sol_tmp[i], num_rows='dynamic', key=f'{i}_solution', hide_index=True, column_config={'Name': st.column_config.SelectboxColumn(options=st.session_state.chemical_list, required=True), 'Concentration [g/L]': st.column_config.NumberColumn(required=True)})
+- L 234 |                 st.session_state.autoclave[i] = st.checkbox('<LABEL>', value=True, key=f'{i}_autoclave')
+- L 237 |             sol_calc = st.form_submit_button('<LABEL>')
+- L 238 |             if sol_calc:
+- L 239 |                 st.session_state.solutions = {}
+- L 240 |                 for (idx, i) in enumerate(sol_list):
+- L 241 |                     st.session_state.solutions[i] = dict(zip(sol_tmp[i]['Name'], sol_tmp[i]['Concentration [g/L]']))
+- L 242 |                     st.session_state.solutions[i] = fill_water3(st.session_state.solutions[i], 1)
+- L 243 |                     st.session_state.prices[i] = 0
+- L 244 |                     for (chem, mass) in st.session_state.solutions[i].items():
+- L 245 |                         st.session_state.prices[i] += mass * st.session_state.chem_data['Price (USD/kg)'][chem]
+- L 246 |                     st.session_state.solutions['Water'] = {'Water': 1000}
+- L 247 |                     st.session_state.autoclave['Water'] = False
+- L 248 |                     st.session_state.prices['Water'] = float(st.session_state.chem_data['Price (USD/kg)']['Water'])
+- L 249 |                     st.session_state.proceed2 = True
+- L 250 |                 st.rerun()
++ L 609 |                 st.session_state.solutions[i] = dict(zip(sol_tmp[i]['Name'], sol_tmp[i]['Concentration [g/L]']))
++ L 610 |                 st.session_state.solutions[i] = fill_water3(st.session_state.solutions[i], 1)
++ L 611 |                 st.session_state.prices[i] = 0
++ L 612 |                 for (chem, mass) in st.session_state.solutions[i].items():
++ L 613 |                     st.session_state.prices[i] += mass * st.session_state.chem_data['Price (USD/kg)'][chem]
++ L 614 |                 st.session_state.solutions['Water'] = {'Water': 1000}
++ L 615 |                 st.session_state.autoclave['Water'] = False
++ L 616 |                 st.session_state.prices['Water'] = float(st.session_state.chem_data['Price (USD/kg)']['Water'])
++ L 617 |                 st.session_state.proceed2 = True
++ L 618 |             st.rerun()
+
+## HUNK 8: delete  BASE[264:265]  OTHER[279:279]
+- L 488 |         utility2 = {}
+
+## HUNK 9: replace  BASE[283:284]  OTHER[297:298]
+- L 523 |             currency = st.number_input('<LABEL>', value=st.session_state.currency, key=st.session_state.currency)
++ L 818 |             currency = st.number_input('<LABEL>', value=st.session_state.currency, key=f'curr_{st.session_state.currency}')
+
+## HUNK 10: replace  BASE[285:286]  OTHER[299:300]
+- L 525 |             currency = st.number_input('<LABEL>', value=1500, key=st.session_state.currency)
++ L 820 |             currency = st.number_input('<LABEL>', value=1500, key='curr_fallback')
+
+# TOTAL NON-UI HUNKS: 10
+
+# st.write calls (reported separately; treated as UI/debug output)
+  - BASE L126 | st.write(st.session_state.chemicals('KH2PO4'))
+  - BASE L186 | st.write('Utilities')
+  - BASE L224 | st.write(i)
+  - BASE L262 | st.write(st.session_state.selected_id_old)
+  - BASE L412 | st.write('batch_time', batch_time)
+  - BASE L454 | st.write('Out', j, j.F_vol * st.session_state.operating_hours, 'kg/year')
+  + OTHER L778 | st.write('Out:', j, f'{j.F_vol * st.session_state.operating_hours:,.2f} kg/year')
+  = BASE L455 / OTHER L779 | st.write(i.results())
+
+RESULT: DIFF (10 hunks)

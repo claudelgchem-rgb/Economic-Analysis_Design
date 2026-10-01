@@ -1,0 +1,4 @@
+m1: normalised statements: v1=348 v3=345  non-equal blocks=2
+m2: normalised statements: v1=348 v3=345  non-equal blocks=2
+m3: normalised statements: v1=348 v3=345  non-equal blocks=2
+m4: normalised statements: v1=348 v3=345  non-equal blocks=3
